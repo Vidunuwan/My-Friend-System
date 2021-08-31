@@ -27,8 +27,9 @@ session_start();
 <body>
 	<div>
 	<?php
+	include('LinkToDatabase.php');//link to data base
 	$email=$_SESSION["email"];
-	$link= new Mysqli('localhost','root','','assignment');
+	
 	
 
 	$range=5;//start of pagimg
@@ -70,15 +71,15 @@ session_start();
 	
 	$sql="SELECT U.Pname,U.Email FROM users U,friends F WHERE U.Email=F.Emailf AND F.Email='$email' LIMIT $start, $range";
 	$result=$link->query($sql);
-	while($raw=$result->fetch_array()){	
+	while($raw=$result->fetch_array()){	//list friends
 	?>
 		<table width="200" border="1">
   		<tbody>
     		<tr>
       		<th><?php echo $raw[0]?></th><td><form name="form" method="post" action=<?php echo $_SERVER['PHP_SELF']?>>
-				<input type="hidden" value="Unfriend" name="stat">
-				<input type="hidden" name="mail" value=<?php echo $raw[1];?>>
-				<input type="submit" name="submit" value="Unfriend" >
+				<input type="hidden" value="Unfriend" name="stat"><!--return contain value unfriend or not-->
+				<input type="hidden" name="mail" value=<?php echo $raw[1];?>><!--Return e mail adress of unfriend person-->
+				<input type="submit" name="submit" value="Unfriend" ><!--Unfriend button-->
 				</form></td>
     		</tr>
   		</tbody>
@@ -93,7 +94,7 @@ session_start();
 	<tr>
 		<td style="text-align: left;">
 		<?php
-		if ($pageno>1){
+		if ($pageno>1){//paging
 		?>
 			<a href="Frindspage.php?pageno=<?php echo $pageno-1; ?>">Previous</a>
 		</td>	

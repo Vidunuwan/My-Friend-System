@@ -19,9 +19,8 @@
 <body>
 	<div>
 	<?php
+	include('LinkToDatabase.php');//link to data base
 	$error="";
-	$link= new Mysqli('localhost','root','','assignment');
-	if($link->connect_error)die("Fail to link with data base");
 	
 	if(isset($_REQUEST['submit'])){//get form values to variable
 		$email=$_REQUEST['email'];

@@ -21,8 +21,8 @@ session_start();
 <body>
 	<div>
 	<?Php
+	include('LinkToDatabase.php');//link to data base
 	$error="";
-	$link= new Mysqli('localhost','root','','assignment');//link to data base
 	
 	if(isset($_REQUEST['submit'])){
 		$email=$_REQUEST['email'];
@@ -76,8 +76,8 @@ session_start();
 			<th><input type="submit" value="Log In" name="submit"></th>
 			<td><input type="reset" value="Clear" name="reset"></td>
 		</tr>
-  	</tbody>
-	</table>
+  		</tbody>
+		</table>
 	</form>
 	<br>
 	<a href="HomePage.php">Back to Home Page</a>

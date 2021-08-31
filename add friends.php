@@ -28,9 +28,9 @@ session_start();
 <body>
 <div>
 <?php
-	$email=$_SESSION["email"];//get log in email
-	$link= new Mysqli('localhost','root','','assignment');//link to data base
 	
+	include('LinkToDatabase.php');//link to data base
+	$email=$_SESSION["email"];//get log in email
 	
 	$range=5;//start of pagimg
 	if(isset($_REQUEST['pageno'])){
@@ -101,12 +101,12 @@ session_start();
 	<?PHP	
 	}
 	
-?><br>
+	?><br>
 	<table>
 	<tr>
 		<td style="text-align: left;">
 		<?php
-		if ($pageno>1){
+		if ($pageno>1){//paging
 		?>
 			<a href="add friends.php?pageno=<?php echo $pageno-1; ?>">Previous</a>
 		</td>	
@@ -123,9 +123,9 @@ session_start();
 		}
 		
 		?>
-	</tr>
+		</tr>
 		<tr><td><p></p></td></tr>
-	<tr>
+		<tr>
 		<td style="text-align: left;"><a href="Frindspage.php">Back to<br> Friend List</a><td/>
 		<td style="text-align: right;"><a href="HomePage.php">Log Out</a></td>
 	</tr>
